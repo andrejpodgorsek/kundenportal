@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-kunde-heading" jhiTranslate="kundenportalApp.kunde.home.createOrEditLabel">Create or edit a Kunde</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.anrede" for="field_anrede">Anrede</label>
+                    <select class="form-control" name="anrede" formControlName="anrede" id="field_anrede">
+                        <option value="HERR">{{ 'kundenportalApp.Anrede.HERR' | translate }}</option>
+                        <option value="FRAU">{{ 'kundenportalApp.Anrede.FRAU' | translate }}</option>
+                        <option value="ANDERE">{{ 'kundenportalApp.Anrede.ANDERE' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('anrede')!.invalid && (editForm.get('anrede')!.dirty || editForm.get('anrede')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('anrede')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.vorname" for="field_vorname">Vorname</label>
+                    <input type="text" class="form-control" name="vorname" id="field_vorname"
+                           formControlName="vorname"/>
+                    <div *ngIf="editForm.get('vorname')!.invalid && (editForm.get('vorname')!.dirty || editForm.get('vorname')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('vorname')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.strasse" for="field_strasse">Strasse</label>
+                    <input type="text" class="form-control" name="strasse" id="field_strasse"
+                           formControlName="strasse"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.plzort" for="field_plzort">Plzort</label>
+                    <input type="text" class="form-control" name="plzort" id="field_plzort"
+                           formControlName="plzort"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.telefonnr" for="field_telefonnr">Telefonnr</label>
+                    <input type="text" class="form-control" name="telefonnr" id="field_telefonnr"
+                           formControlName="telefonnr"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.iban" for="field_iban">Iban</label>
+                    <input type="text" class="form-control" name="iban" id="field_iban"
+                           formControlName="iban"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.created" for="field_created">Created</label>
+                    <div class="d-flex">
+                        <input id="field_created" type="datetime-local" class="form-control" name="created" formControlName="created" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.kunde.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

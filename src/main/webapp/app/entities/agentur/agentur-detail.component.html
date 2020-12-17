@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="agentur">
+            <h2><span jhiTranslate="kundenportalApp.agentur.detail.title">Agentur</span> {{ agentur.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kundenportalApp.agentur.agenturnummer">Agenturnummer</span></dt>
+                <dd>
+                    <span>{{ agentur.agenturnummer }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.name">Name</span></dt>
+                <dd>
+                    <span>{{ agentur.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{ agentur.adresse }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.email">Email</span></dt>
+                <dd>
+                    <span>{{ agentur.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.telefonnr">Telefonnr</span></dt>
+                <dd>
+                    <span>{{ agentur.telefonnr }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.created">Created</span></dt>
+                <dd>
+                    <span>{{ agentur.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.agentur.user">User</span></dt>
+                <dd>
+                    {{ agentur.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/agentur', agentur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

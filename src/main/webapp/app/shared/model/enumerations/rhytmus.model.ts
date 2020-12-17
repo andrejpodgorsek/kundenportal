@@ -1,0 +1,7 @@
+export const enum Rhytmus {
+  MONATLICH = 'MONATLICH',
+
+  VIERTERJAERLICH = 'VIERTERJAERLICH',
+
+  JAERLICH = 'JAERLICH',
+}

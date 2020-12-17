@@ -1,0 +1,30 @@
+{
+  "kundenportalApp": {
+    "vertrag": {
+      "home": {
+        "title": "Vertrags",
+        "createLabel": "Vertrag erstellen",
+        "createOrEditLabel": "Vertrag erstellen oder bearbeiten",
+        "search": "Suche nach Vertrag",
+        "notFound": "No Vertrags found"
+      },
+      "created": "Vertrag erstellt mit ID {{ param }}",
+      "updated": "Vertrag aktualisiert mit ID {{ param }}",
+      "deleted": "Vertrag gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Vertrag {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Vertrag"
+      },
+      "vsnr": "Vsnr",
+      "sparte": "Sparte",
+      "zahlenrhytmus": "Zahlenrhytmus",
+      "antragsdatum": "Antragsdatum",
+      "versicherungsbeginn": "Versicherungsbeginn",
+      "iban": "Iban",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

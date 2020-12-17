@@ -1,0 +1,29 @@
+{
+  "kundenportalApp": {
+    "nachricht": {
+      "home": {
+        "title": "Nachrichts",
+        "createLabel": "Create a new Nachricht",
+        "createOrEditLabel": "Create or edit a Nachricht",
+        "search": "Search for Nachricht",
+        "notFound": "No Nachrichts found"
+      },
+      "created": "A new Nachricht is created with identifier {{ param }}",
+      "updated": "A Nachricht is updated with identifier {{ param }}",
+      "deleted": "A Nachricht is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nachricht {{ id }}?"
+      },
+      "detail": {
+        "title": "Nachricht"
+      },
+      "an": "An",
+      "betreff": "Betreff",
+      "text": "Text",
+      "anhang": "Anhang",
+      "status": "Status",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

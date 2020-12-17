@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="kunde">
+            <h2><span jhiTranslate="kundenportalApp.kunde.detail.title">Kunde</span> {{ kunde.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kundenportalApp.kunde.anrede">Anrede</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.Anrede.' + kunde.anrede }}">{{ kunde.anrede }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.name">Name</span></dt>
+                <dd>
+                    <span>{{ kunde.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.vorname">Vorname</span></dt>
+                <dd>
+                    <span>{{ kunde.vorname }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.email">Email</span></dt>
+                <dd>
+                    <span>{{ kunde.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.strasse">Strasse</span></dt>
+                <dd>
+                    <span>{{ kunde.strasse }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.plzort">Plzort</span></dt>
+                <dd>
+                    <span>{{ kunde.plzort }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.telefonnr">Telefonnr</span></dt>
+                <dd>
+                    <span>{{ kunde.telefonnr }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.iban">Iban</span></dt>
+                <dd>
+                    <span>{{ kunde.iban }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.created">Created</span></dt>
+                <dd>
+                    <span>{{ kunde.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.kunde.user">User</span></dt>
+                <dd>
+                    {{ kunde.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/kunde', kunde.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

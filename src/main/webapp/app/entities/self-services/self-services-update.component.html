@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-self-services-heading" jhiTranslate="kundenportalApp.selfServices.home.createOrEditLabel">Create or edit a Self Services</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.serviceTyp" for="field_serviceTyp">Service Typ</label>
+                    <select class="form-control" name="serviceTyp" formControlName="serviceTyp" id="field_serviceTyp">
+                        <option value="ADRESSDATEN_AENDERN">{{ 'kundenportalApp.ServicesTyp.ADRESSDATEN_AENDERN' | translate }}</option>
+                        <option value="BANKVERBINDUNG_AENDERN">{{ 'kundenportalApp.ServicesTyp.BANKVERBINDUNG_AENDERN' | translate }}</option>
+                        <option value="FINANZAMT_BESCHEINIGUNG">{{ 'kundenportalApp.ServicesTyp.FINANZAMT_BESCHEINIGUNG' | translate }}</option>
+                        <option value="BEITRAG_AENDERN">{{ 'kundenportalApp.ServicesTyp.BEITRAG_AENDERN' | translate }}</option>
+                        <option value="ZULAGEN_ANTRAG">{{ 'kundenportalApp.ServicesTyp.ZULAGEN_ANTRAG' | translate }}</option>
+                        <option value="WERBUNG_AKTIVIEREN">{{ 'kundenportalApp.ServicesTyp.WERBUNG_AKTIVIEREN' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('serviceTyp')!.invalid && (editForm.get('serviceTyp')!.dirty || editForm.get('serviceTyp')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('serviceTyp')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="GEPLANT">{{ 'kundenportalApp.ServicesStatus.GEPLANT' | translate }}</option>
+                        <option value="EINGEREICHT">{{ 'kundenportalApp.ServicesStatus.EINGEREICHT' | translate }}</option>
+                        <option value="IN_BEARBEITUNG">{{ 'kundenportalApp.ServicesStatus.IN_BEARBEITUNG' | translate }}</option>
+                        <option value="ERLEDIGT">{{ 'kundenportalApp.ServicesStatus.ERLEDIGT' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                           formControlName="text"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.datei" for="field_datei">Datei</label>
+                    <div>
+                        <div *ngIf="editForm.get('datei')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('dateiContentType')!.value, editForm.get('datei')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('dateiContentType')!.value }}, {{ byteSize(editForm.get('datei')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({datei: null});editForm.patchValue({dateiContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_datei" (change)="setFileData($event, 'datei', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="datei" id="field_datei"
+                           formControlName="datei"/>
+                    <input type="hidden" class="form-control" name="dateiContentType" id="field_dateiContentType"
+                           formControlName="dateiContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.created" for="field_created">Created</label>
+                    <div class="d-flex">
+                        <input id="field_created" type="datetime-local" class="form-control" name="created" formControlName="created" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kundenportalApp.selfServices.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

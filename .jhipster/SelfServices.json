@@ -1,0 +1,55 @@
+{
+  "name": "SelfServices",
+  "fields": [
+    {
+      "fieldName": "serviceTyp",
+      "fieldType": "ServicesTyp",
+      "fieldValues": "ADRESSDATEN_AENDERN,BANKVERBINDUNG_AENDERN,FINANZAMT_BESCHEINIGUNG,BEITRAG_AENDERN,ZULAGEN_ANTRAG,WERBUNG_AKTIVIEREN",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ServicesStatus",
+      "fieldValues": "GEPLANT,EINGEREICHT,IN_BEARBEITUNG,ERLEDIGT",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datei",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "selfServices",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    }
+  ],
+  "changelogDate": "20201217101054",
+  "entityTableName": "self_services",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

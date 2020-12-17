@@ -1,0 +1,59 @@
+{
+  "name": "Vertrag",
+  "fields": [
+    {
+      "fieldName": "vsnr",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "sparte",
+      "fieldType": "Sparte",
+      "fieldValues": "LV,KRANKEN,SUHK"
+    },
+    {
+      "fieldName": "zahlenrhytmus",
+      "fieldType": "Rhytmus",
+      "fieldValues": "MONATLICH,VIERTERJAERLICH,JAERLICH"
+    },
+    {
+      "fieldName": "antragsdatum",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "versicherungsbeginn",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "vertrag",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    }
+  ],
+  "changelogDate": "20201217100554",
+  "entityTableName": "vertrag",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

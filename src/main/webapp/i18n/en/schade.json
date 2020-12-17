@@ -1,0 +1,27 @@
+{
+  "kundenportalApp": {
+    "schade": {
+      "home": {
+        "title": "Schades",
+        "createLabel": "Create a new Schade",
+        "createOrEditLabel": "Create or edit a Schade",
+        "search": "Search for Schade",
+        "notFound": "No Schades found"
+      },
+      "created": "A new Schade is created with identifier {{ param }}",
+      "updated": "A Schade is updated with identifier {{ param }}",
+      "deleted": "A Schade is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Schade {{ id }}?"
+      },
+      "detail": {
+        "title": "Schade"
+      },
+      "vsnr": "Vsnr",
+      "text": "Text",
+      "anhang": "Anhang",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

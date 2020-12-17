@@ -1,0 +1,10 @@
+{
+  "kundenportalApp": {
+    "NachrichtStatus": {
+      "null": "",
+      "GELESEN": "GELESEN",
+      "UNGELESEN": "UNGELESEN",
+      "ARCHIVIERT": "ARCHIVIERT"
+    }
+  }
+}

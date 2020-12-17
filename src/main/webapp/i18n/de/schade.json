@@ -1,0 +1,27 @@
+{
+  "kundenportalApp": {
+    "schade": {
+      "home": {
+        "title": "Schades",
+        "createLabel": "Schade erstellen",
+        "createOrEditLabel": "Schade erstellen oder bearbeiten",
+        "search": "Suche nach Schade",
+        "notFound": "No Schades found"
+      },
+      "created": "Schade erstellt mit ID {{ param }}",
+      "updated": "Schade aktualisiert mit ID {{ param }}",
+      "deleted": "Schade gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Schade {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Schade"
+      },
+      "vsnr": "Vsnr",
+      "text": "Text",
+      "anhang": "Anhang",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

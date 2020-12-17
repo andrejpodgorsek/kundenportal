@@ -1,0 +1,104 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kundenportalApp.dokument.home.title">Dokuments</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dokument" [routerLink]="['/dokument/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="kundenportalApp.dokument.home.createLabel">
+            Create a new Dokument
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'kundenportalApp.dokument.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dokuments?.length === 0">
+        <span jhiTranslate="kundenportalApp.dokument.home.notFound">No dokuments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dokuments && dokuments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nummer"><span jhiTranslate="kundenportalApp.dokument.nummer">Nummer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dokument"><span jhiTranslate="kundenportalApp.dokument.dokument">Dokument</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="text"><span jhiTranslate="kundenportalApp.dokument.text">Text</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="data"><span jhiTranslate="kundenportalApp.dokument.data">Data</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="created"><span jhiTranslate="kundenportalApp.dokument.created">Created</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="kundenportalApp.dokument.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dokument of dokuments ;trackBy: trackId">
+                    <td><a [routerLink]="['/dokument', dokument.id, 'view']">{{ dokument.id }}</a></td>
+                    <td>{{ dokument.nummer }}</td>
+                    <td jhiTranslate="{{ 'kundenportalApp.DokumentStatus.' + dokument.dokument }}">{{ dokument.dokument }}</td>
+                    <td>{{ dokument.text }}</td>
+                    <td>
+                        <a *ngIf="dokument.data" (click)="openFile(dokument.dataContentType, dokument.data)" jhiTranslate="entity.action.open">open</a>
+                        <span *ngIf="dokument.data">{{ dokument.dataContentType }}, {{ byteSize(dokument.data) }}</span>
+                    </td>
+                    <td>{{ dokument.created | date:'medium' }}</td>
+                    <td>
+                        {{ dokument.user?.login }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/dokument', dokument.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/dokument', dokument.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dokument)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="dokuments && dokuments.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

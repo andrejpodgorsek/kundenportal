@@ -1,0 +1,9 @@
+export const enum ServicesStatus {
+  GEPLANT = 'GEPLANT',
+
+  EINGEREICHT = 'EINGEREICHT',
+
+  IN_BEARBEITUNG = 'IN_BEARBEITUNG',
+
+  ERLEDIGT = 'ERLEDIGT',
+}

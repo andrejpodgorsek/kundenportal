@@ -1,0 +1,104 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kundenportalApp.selfServices.home.title">Self Services</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-self-services" [routerLink]="['/self-services/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="kundenportalApp.selfServices.home.createLabel">
+            Create a new Self Services
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'kundenportalApp.selfServices.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="selfServices?.length === 0">
+        <span jhiTranslate="kundenportalApp.selfServices.home.notFound">No selfServices found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="selfServices && selfServices.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="serviceTyp"><span jhiTranslate="kundenportalApp.selfServices.serviceTyp">Service Typ</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="kundenportalApp.selfServices.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="text"><span jhiTranslate="kundenportalApp.selfServices.text">Text</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="datei"><span jhiTranslate="kundenportalApp.selfServices.datei">Datei</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="created"><span jhiTranslate="kundenportalApp.selfServices.created">Created</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="kundenportalApp.selfServices.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let selfServices of selfServices ;trackBy: trackId">
+                    <td><a [routerLink]="['/self-services', selfServices.id, 'view']">{{ selfServices.id }}</a></td>
+                    <td jhiTranslate="{{ 'kundenportalApp.ServicesTyp.' + selfServices.serviceTyp }}">{{ selfServices.serviceTyp }}</td>
+                    <td jhiTranslate="{{ 'kundenportalApp.ServicesStatus.' + selfServices.status }}">{{ selfServices.status }}</td>
+                    <td>{{ selfServices.text }}</td>
+                    <td>
+                        <a *ngIf="selfServices.datei" (click)="openFile(selfServices.dateiContentType, selfServices.datei)" jhiTranslate="entity.action.open">open</a>
+                        <span *ngIf="selfServices.datei">{{ selfServices.dateiContentType }}, {{ byteSize(selfServices.datei) }}</span>
+                    </td>
+                    <td>{{ selfServices.created | date:'medium' }}</td>
+                    <td>
+                        {{ selfServices.user?.login }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/self-services', selfServices.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/self-services', selfServices.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(selfServices)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="selfServices && selfServices.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

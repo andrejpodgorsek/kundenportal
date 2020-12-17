@@ -1,0 +1,10 @@
+{
+  "kundenportalApp": {
+    "Rhytmus": {
+      "null": "",
+      "MONATLICH": "MONATLICH",
+      "VIERTERJAERLICH": "VIERTERJAERLICH",
+      "JAERLICH": "JAERLICH"
+    }
+  }
+}

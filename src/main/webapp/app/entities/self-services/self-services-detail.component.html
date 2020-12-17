@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="selfServices">
+            <h2><span jhiTranslate="kundenportalApp.selfServices.detail.title">Self Services</span> {{ selfServices.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kundenportalApp.selfServices.serviceTyp">Service Typ</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.ServicesTyp.' + selfServices.serviceTyp }}">{{ selfServices.serviceTyp }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.selfServices.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.ServicesStatus.' + selfServices.status }}">{{ selfServices.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.selfServices.text">Text</span></dt>
+                <dd>
+                    <span>{{ selfServices.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.selfServices.datei">Datei</span></dt>
+                <dd>
+                    <div *ngIf="selfServices.datei">
+                        <a (click)="openFile(selfServices.dateiContentType, selfServices.datei)" jhiTranslate="entity.action.open">open</a>
+                        {{ selfServices.dateiContentType }}, {{ byteSize(selfServices.datei) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.selfServices.created">Created</span></dt>
+                <dd>
+                    <span>{{ selfServices.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.selfServices.user">User</span></dt>
+                <dd>
+                    {{ selfServices.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/self-services', selfServices.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

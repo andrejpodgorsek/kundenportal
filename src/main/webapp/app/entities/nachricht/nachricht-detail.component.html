@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nachricht">
+            <h2><span jhiTranslate="kundenportalApp.nachricht.detail.title">Nachricht</span> {{ nachricht.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kundenportalApp.nachricht.an">An</span></dt>
+                <dd>
+                    <span>{{ nachricht.an }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.betreff">Betreff</span></dt>
+                <dd>
+                    <span>{{ nachricht.betreff }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.text">Text</span></dt>
+                <dd>
+                    <span>{{ nachricht.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.anhang">Anhang</span></dt>
+                <dd>
+                    <div *ngIf="nachricht.anhang">
+                        <a (click)="openFile(nachricht.anhangContentType, nachricht.anhang)" jhiTranslate="entity.action.open">open</a>
+                        {{ nachricht.anhangContentType }}, {{ byteSize(nachricht.anhang) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.NachrichtStatus.' + nachricht.status }}">{{ nachricht.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.created">Created</span></dt>
+                <dd>
+                    <span>{{ nachricht.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.nachricht.user">User</span></dt>
+                <dd>
+                    {{ nachricht.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nachricht', nachricht.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

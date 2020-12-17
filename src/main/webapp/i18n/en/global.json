@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "kunde": "Kunde",
+        "vertrag": "Vertrag",
+        "dokument": "Dokument",
+        "nachricht": "Nachricht",
+        "schade": "Schade",
+        "agentur": "Agentur",
+        "selfServices": "Self Services",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,28 @@
+{
+  "kundenportalApp": {
+    "dokument": {
+      "home": {
+        "title": "Dokuments",
+        "createLabel": "Dokument erstellen",
+        "createOrEditLabel": "Dokument erstellen oder bearbeiten",
+        "search": "Suche nach Dokument",
+        "notFound": "No Dokuments found"
+      },
+      "created": "Dokument erstellt mit ID {{ param }}",
+      "updated": "Dokument aktualisiert mit ID {{ param }}",
+      "deleted": "Dokument gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Dokument {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Dokument"
+      },
+      "nummer": "Nummer",
+      "dokument": "Dokument",
+      "text": "Text",
+      "data": "Data",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

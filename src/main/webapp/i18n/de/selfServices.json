@@ -1,0 +1,28 @@
+{
+  "kundenportalApp": {
+    "selfServices": {
+      "home": {
+        "title": "Self Services",
+        "createLabel": "Self Services erstellen",
+        "createOrEditLabel": "Self Services erstellen oder bearbeiten",
+        "search": "Suche nach Self Services",
+        "notFound": "No Self Services found"
+      },
+      "created": "Self Services erstellt mit ID {{ param }}",
+      "updated": "Self Services aktualisiert mit ID {{ param }}",
+      "deleted": "Self Services gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Self Services {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Self Services"
+      },
+      "serviceTyp": "Service Typ",
+      "status": "Status",
+      "text": "Text",
+      "datei": "Datei",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

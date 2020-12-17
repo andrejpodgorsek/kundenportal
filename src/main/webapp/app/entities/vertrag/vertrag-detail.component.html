@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vertrag">
+            <h2><span jhiTranslate="kundenportalApp.vertrag.detail.title">Vertrag</span> {{ vertrag.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kundenportalApp.vertrag.vsnr">Vsnr</span></dt>
+                <dd>
+                    <span>{{ vertrag.vsnr }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.sparte">Sparte</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.Sparte.' + vertrag.sparte }}">{{ vertrag.sparte }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.zahlenrhytmus">Zahlenrhytmus</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kundenportalApp.Rhytmus.' + vertrag.zahlenrhytmus }}">{{ vertrag.zahlenrhytmus }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.antragsdatum">Antragsdatum</span></dt>
+                <dd>
+                    <span>{{ vertrag.antragsdatum }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.versicherungsbeginn">Versicherungsbeginn</span></dt>
+                <dd>
+                    <span>{{ vertrag.versicherungsbeginn }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.iban">Iban</span></dt>
+                <dd>
+                    <span>{{ vertrag.iban }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.created">Created</span></dt>
+                <dd>
+                    <span>{{ vertrag.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="kundenportalApp.vertrag.user">User</span></dt>
+                <dd>
+                    {{ vertrag.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vertrag', vertrag.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

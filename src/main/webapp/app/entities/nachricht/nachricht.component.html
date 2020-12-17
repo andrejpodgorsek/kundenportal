@@ -1,0 +1,106 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kundenportalApp.nachricht.home.title">Nachrichts</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-nachricht" [routerLink]="['/nachricht/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="kundenportalApp.nachricht.home.createLabel">
+            Create a new Nachricht
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'kundenportalApp.nachricht.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="nachrichts?.length === 0">
+        <span jhiTranslate="kundenportalApp.nachricht.home.notFound">No nachrichts found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="nachrichts && nachrichts.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="an"><span jhiTranslate="kundenportalApp.nachricht.an">An</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="betreff"><span jhiTranslate="kundenportalApp.nachricht.betreff">Betreff</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="text"><span jhiTranslate="kundenportalApp.nachricht.text">Text</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="anhang"><span jhiTranslate="kundenportalApp.nachricht.anhang">Anhang</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="kundenportalApp.nachricht.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="created"><span jhiTranslate="kundenportalApp.nachricht.created">Created</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="kundenportalApp.nachricht.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nachricht of nachrichts ;trackBy: trackId">
+                    <td><a [routerLink]="['/nachricht', nachricht.id, 'view']">{{ nachricht.id }}</a></td>
+                    <td>{{ nachricht.an }}</td>
+                    <td>{{ nachricht.betreff }}</td>
+                    <td>{{ nachricht.text }}</td>
+                    <td>
+                        <a *ngIf="nachricht.anhang" (click)="openFile(nachricht.anhangContentType, nachricht.anhang)" jhiTranslate="entity.action.open">open</a>
+                        <span *ngIf="nachricht.anhang">{{ nachricht.anhangContentType }}, {{ byteSize(nachricht.anhang) }}</span>
+                    </td>
+                    <td jhiTranslate="{{ 'kundenportalApp.NachrichtStatus.' + nachricht.status }}">{{ nachricht.status }}</td>
+                    <td>{{ nachricht.created | date:'medium' }}</td>
+                    <td>
+                        {{ nachricht.user?.login }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/nachricht', nachricht.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/nachricht', nachricht.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(nachricht)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="nachrichts && nachrichts.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "kundenportalApp": {
+    "ServicesStatus": {
+      "null": "",
+      "GEPLANT": "GEPLANT",
+      "EINGEREICHT": "EINGEREICHT",
+      "IN_BEARBEITUNG": "IN_BEARBEITUNG",
+      "ERLEDIGT": "ERLEDIGT"
+    }
+  }
+}

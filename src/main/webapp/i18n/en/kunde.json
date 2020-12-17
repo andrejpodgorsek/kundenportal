@@ -1,0 +1,32 @@
+{
+  "kundenportalApp": {
+    "kunde": {
+      "home": {
+        "title": "Kundes",
+        "createLabel": "Create a new Kunde",
+        "createOrEditLabel": "Create or edit a Kunde",
+        "search": "Search for Kunde",
+        "notFound": "No Kundes found"
+      },
+      "created": "A new Kunde is created with identifier {{ param }}",
+      "updated": "A Kunde is updated with identifier {{ param }}",
+      "deleted": "A Kunde is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Kunde {{ id }}?"
+      },
+      "detail": {
+        "title": "Kunde"
+      },
+      "anrede": "Anrede",
+      "name": "Name",
+      "vorname": "Vorname",
+      "email": "Email",
+      "strasse": "Strasse",
+      "plzort": "Plzort",
+      "telefonnr": "Telefonnr",
+      "iban": "Iban",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}
