@@ -1,0 +1,10 @@
+{
+  "kundenportalApp": {
+    "Anrede": {
+      "null": "",
+      "HERR": "HERR",
+      "FRAU": "FRAU",
+      "ANDERE": "ANDERE"
+    }
+  }
+}

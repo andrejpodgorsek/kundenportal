@@ -1,0 +1,32 @@
+{
+  "kundenportalApp": {
+    "kunde": {
+      "home": {
+        "title": "Kundes",
+        "createLabel": "Kunde erstellen",
+        "createOrEditLabel": "Kunde erstellen oder bearbeiten",
+        "search": "Suche nach Kunde",
+        "notFound": "No Kundes found"
+      },
+      "created": "Kunde erstellt mit ID {{ param }}",
+      "updated": "Kunde aktualisiert mit ID {{ param }}",
+      "deleted": "Kunde gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Kunde {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Kunde"
+      },
+      "anrede": "Anrede",
+      "name": "Name",
+      "vorname": "Vorname",
+      "email": "Email",
+      "strasse": "Strasse",
+      "plzort": "Plzort",
+      "telefonnr": "Telefonnr",
+      "iban": "Iban",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

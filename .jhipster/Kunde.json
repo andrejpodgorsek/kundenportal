@@ -1,0 +1,76 @@
+{
+  "name": "Kunde",
+  "fields": [
+    {
+      "fieldName": "anrede",
+      "fieldType": "Anrede",
+      "fieldValues": "HERR,FRAU,ANDERE",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "vorname",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "strasse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "plzort",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefonnr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "kunde",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201217100454",
+  "entityTableName": "kunde",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

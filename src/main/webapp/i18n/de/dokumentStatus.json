@@ -1,0 +1,10 @@
+{
+  "kundenportalApp": {
+    "DokumentStatus": {
+      "null": "",
+      "ANGEBOT": "ANGEBOT",
+      "ANTRAG": "ANTRAG",
+      "POLICE": "POLICE"
+    }
+  }
+}

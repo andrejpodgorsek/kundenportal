@@ -1,0 +1,13 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+resources:
+  # Individual apps
+  - kundenportal-k8s/kundenportal-deployment.yml
+  - kundenportal-k8s/kundenportal-service.yml
+  - kundenportal-k8s/kundenportal-postgresql.yml
+  - kundenportal-k8s/kundenportal-elasticsearch.yml
+  - kundenportal-k8s/jwt-secret.yml
+# service discovery eureka/consul
+
+patchesJson6902:

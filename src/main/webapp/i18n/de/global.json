@@ -6,7 +6,14 @@
       "home": "Startseite",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entitäten",
+        "main": "Menü",
+        "kunde": "Kundendaten",
+        "vertrag": "Verträge",
+        "dokument": "Dokumenten Managment",
+        "nachricht": "Postfach",
+        "schade": "Schadenmeldung",
+        "agentur": "Agentur",
+        "selfServices": "Self Services",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -135,5 +142,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "Dies ist Ihre Fußzeile"
+  "footer": "Copyright 2021 Andrej Podgorsek"
 }

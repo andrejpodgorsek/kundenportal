@@ -1,0 +1,30 @@
+{
+  "kundenportalApp": {
+    "vertrag": {
+      "home": {
+        "title": "Vertrags",
+        "createLabel": "Create a new Vertrag",
+        "createOrEditLabel": "Create or edit a Vertrag",
+        "search": "Search for Vertrag",
+        "notFound": "No Vertrags found"
+      },
+      "created": "A new Vertrag is created with identifier {{ param }}",
+      "updated": "A Vertrag is updated with identifier {{ param }}",
+      "deleted": "A Vertrag is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vertrag {{ id }}?"
+      },
+      "detail": {
+        "title": "Vertrag"
+      },
+      "vsnr": "Vsnr",
+      "sparte": "Sparte",
+      "zahlenrhytmus": "Zahlenrhytmus",
+      "antragsdatum": "Antragsdatum",
+      "versicherungsbeginn": "Versicherungsbeginn",
+      "iban": "Iban",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}

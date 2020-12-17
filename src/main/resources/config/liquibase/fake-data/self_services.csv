@@ -1,0 +1,11 @@
+id;service_typ;status;text;datei;datei_content_type;created
+1;BANKVERBINDUNG_AENDERN;EINGEREICHT;Maryland;../fake-data/blob/hipster.png;image/png;2020-12-17T05:12:31
+2;BANKVERBINDUNG_AENDERN;ERLEDIGT;e-enable Regional;../fake-data/blob/hipster.png;image/png;2020-12-16T15:45:06
+3;FINANZAMT_BESCHEINIGUNG;IN_BEARBEITUNG;capacitor;../fake-data/blob/hipster.png;image/png;2020-12-16T23:04:06
+4;WERBUNG_AKTIVIEREN;ERLEDIGT;action-items Optimization;../fake-data/blob/hipster.png;image/png;2020-12-17T09:10:11
+5;WERBUNG_AKTIVIEREN;GEPLANT;Director;../fake-data/blob/hipster.png;image/png;2020-12-16T12:44:30
+6;BEITRAG_AENDERN;ERLEDIGT;Burundi;../fake-data/blob/hipster.png;image/png;2020-12-16T10:58:37
+7;BANKVERBINDUNG_AENDERN;ERLEDIGT;black;../fake-data/blob/hipster.png;image/png;2020-12-16T21:59:18
+8;BEITRAG_AENDERN;GEPLANT;Usability applications navigate;../fake-data/blob/hipster.png;image/png;2020-12-16T18:33:48
+9;ZULAGEN_ANTRAG;EINGEREICHT;Adaptive;../fake-data/blob/hipster.png;image/png;2020-12-17T02:36:46
+10;WERBUNG_AKTIVIEREN;IN_BEARBEITUNG;exuding Liberia navigate;../fake-data/blob/hipster.png;image/png;2020-12-16T17:42:11

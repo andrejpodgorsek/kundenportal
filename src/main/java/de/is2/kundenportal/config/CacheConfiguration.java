@@ -48,6 +48,13 @@ public class CacheConfiguration {
             createCache(cm, de.is2.kundenportal.domain.User.class.getName());
             createCache(cm, de.is2.kundenportal.domain.Authority.class.getName());
             createCache(cm, de.is2.kundenportal.domain.User.class.getName() + ".authorities");
+            createCache(cm, de.is2.kundenportal.domain.Kunde.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.Vertrag.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.Dokument.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.Nachricht.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.Schade.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.Agentur.class.getName());
+            createCache(cm, de.is2.kundenportal.domain.SelfServices.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

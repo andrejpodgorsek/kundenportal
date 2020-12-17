@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "Willkommen, Java Hipster!",
+    "title": "Ola in Kunden Portal!",
     "subtitle": "Dies ist Ihre Hauptseite",
     "logged": {
       "message": "Sie sind als Benutzer \"{{username}}\" angemeldet."
@@ -11,7 +11,12 @@
       "stackoverflow": "JHipster auf Stack Overflow",
       "bugtracker": "JHipster Fehlereinträge",
       "chat": "JHipster Chat",
-      "follow": "kontaktieren Sie uns mit @jhipster auf Twitter"
+      "follow": "kontaktieren Sie uns mit @jhipster auf Twitter",
+      "vertraege": "Hier haben Sie den perfekten Gesamtüberblick über Ihre Absicherung sowie maximale Transparenz und Effektivität bei der Vertragsverwaltung.",
+      "dokumenten": "Der Dokumentenmanager zeigt alle Dokumenten Ihres Bestandes. Hier können Sie nachverfolgen, in welchem Bearbeitungsschritt sich ein Dokument befindet.",
+      "selfservices": "Hier können Sie Ihre Bescheinigungen erstellen (Finanzamt, Beitrag, Zulagenantrag) anfordern sowie Bank- und Adress- Daten ändern.",
+      "schadenmeldung": "Hier sind alle Schäden Ihres Bestandes aufgelistet. Damit sehen Sie die wichtigsten Daten der Schäden Ihrer Kunden und sind immer auskunftsbereit.",
+      "postfach": "Im Posteingang liegt die Post Ihrer angebundenen Versicherer. Um Ihre Vermittlerpost abzuholen können Sie den BiPRO-Datentransfer oder die Direktanbindungen der Versicherer nutzen."
     },
     "like": "Wenn Sie JHipster mögen, vergessen Sie nicht uns einen Stern zu geben auf",
     "github": "GitHub"

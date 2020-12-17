@@ -1,0 +1,29 @@
+{
+  "kundenportalApp": {
+    "agentur": {
+      "home": {
+        "title": "Agenturs",
+        "createLabel": "Create a new Agentur",
+        "createOrEditLabel": "Create or edit a Agentur",
+        "search": "Search for Agentur",
+        "notFound": "No Agenturs found"
+      },
+      "created": "A new Agentur is created with identifier {{ param }}",
+      "updated": "A Agentur is updated with identifier {{ param }}",
+      "deleted": "A Agentur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Agentur {{ id }}?"
+      },
+      "detail": {
+        "title": "Agentur"
+      },
+      "agenturnummer": "Agenturnummer",
+      "name": "Name",
+      "adresse": "Adresse",
+      "email": "Email",
+      "telefonnr": "Telefonnr",
+      "created": "Created",
+      "user": "User"
+    }
+  }
+}
