@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "de.is2.kundenportal",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "6.10.4",
+    "applicationType": "monolith",
+    "baseName": "kundenportal",
+    "packageName": "de.is2.kundenportal",
+    "packageFolder": "de/is2/kundenportal",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2Y1M2JkN2FiNGM3ZTI1ZjNhMTFmODc5NTAxYmYzMTM0ZjUxOTlmM2ExZWIwYjNjYTFlMTVlODc3MTM0NGNiOTJlNTdmZTJkZGI4NTVhZDIwZDZmNzljZmQ5MjU1OWY0YWZiM2FiMTM4ZTQ0NDA2MjQ5MzhiZmYxNDE5MDkzYTU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cosmo",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1608196425736,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": ["de", "en"],
+    "blueprints": []
+  }
+}

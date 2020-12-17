@@ -1,0 +1,135 @@
+entity Kunde {
+	anrede Anrede required
+	name String required
+    vorname String required
+    email String required
+    strasse String
+    plzort String
+    telefonnr String
+  	iban String
+    created Instant
+}
+
+entity Vertrag {
+	vsnr String required
+	sparte Sparte
+    zahlenrhytmus Rhytmus
+	antragsdatum Instant
+    versicherungsbeginn Instant
+    iban String
+    created Instant
+}
+
+entity Dokument {
+	nummer String required
+    dokument DokumentStatus
+    text String
+    data Blob
+    created Instant
+}
+
+entity Nachricht {
+	an String required
+	betreff String required
+    text String required
+    anhang Blob
+    status NachrichtStatus
+    created Instant
+}
+
+entity Schade {
+	vsnr String required
+    text String
+    anhang Blob
+    created Instant
+}
+
+entity Agentur {
+	agenturnummer String required
+	name String
+    adresse String
+    email String
+    telefonnr String
+    created Instant
+}
+
+entity SelfServices {
+	serviceTyp ServicesTyp required
+    status ServicesStatus required
+    text String
+    datei Blob
+    created Instant
+}
+
+enum Rhytmus {
+	MONATLICH,
+    VIERTERJAERLICH,
+    JAERLICH
+}
+
+enum Sparte {
+	LV,
+    KRANKEN,
+    SUHK
+}
+
+enum Anrede {
+	HERR,
+    FRAU,
+    ANDERE
+}
+
+enum NachrichtStatus {
+	GELESEN,
+    UNGELESEN,
+    ARCHIVIERT
+}
+
+enum DokumentStatus {
+	ANGEBOT,
+    ANTRAG,
+    POLICE
+}
+
+enum ServicesTyp {
+	ADRESSDATEN_AENDERN,
+    BANKVERBINDUNG_AENDERN,
+    FINANZAMT_BESCHEINIGUNG,
+    BEITRAG_AENDERN,
+    ZULAGEN_ANTRAG,
+    WERBUNG_AKTIVIEREN
+}
+
+enum ServicesStatus {
+	GEPLANT,
+	EINGEREICHT,
+    IN_BEARBEITUNG,
+    ERLEDIGT    
+}
+
+relationship OneToOne {
+  Kunde{user(login)} to User
+}
+
+relationship ManyToOne {
+  Vertrag{user(login)} to User
+  Dokument{user(login)} to User
+  Nachricht{user(login)} to User
+  Schade{user(login)} to User
+  Agentur{user(login)} to User
+  SelfServices{user(login)} to User
+}
+
+
+
+// Set pagination options
+paginate all with pagination
+
+search * with elasticsearch
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
